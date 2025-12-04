@@ -1,3 +1,11 @@
+/*
+        ∗ @file: Proj4.java
+∗ @description: This program implements the Separate chaining hash table insert, remove, contains, makeEmpty, and rehash methods
+        ∗ @author: Alexander Chung
+∗ @date: December 4, 2025
+                                              */
+
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,6 +47,14 @@ public class SeparateChainingHashTable<AnyType> {
      */
     public void insert(AnyType x) {
         // FINISH ME
+
+        List<AnyType> whichList = theLists[ myhash( x ) ];
+        if( !whichList.contains ( x ) ) {
+            whichList.add( x );
+
+            if( ++currentSize > theLists.length )
+                rehash();
+        }
     }
 
     /**
@@ -48,6 +64,12 @@ public class SeparateChainingHashTable<AnyType> {
      */
     public void remove(AnyType x) {
         // FINISH ME
+
+        List<AnyType> whichList = theLists[ myhash ( x )];
+        if( whichList.contains( x )) {
+            whichList.remove( x );
+            currentSize--;
+        }
     }
 
     /**
@@ -58,6 +80,10 @@ public class SeparateChainingHashTable<AnyType> {
      */
     public boolean contains(AnyType x) {
         // FINISH ME
+
+        List<AnyType> whichList = theLists[ myhash( x ) ];
+        return whichList.contains( x );
+
     }
 
     /**
@@ -65,6 +91,12 @@ public class SeparateChainingHashTable<AnyType> {
      */
     public void makeEmpty() {
         // FINISH ME
+
+        for( int i = 0; i < theLists.length; i++ ){
+            theLists[ i ].clear();
+        }
+
+        currentSize = 0;
     }
 
     /**
@@ -89,6 +121,20 @@ public class SeparateChainingHashTable<AnyType> {
 
     private void rehash() {
         // FINISH ME
+
+        List<AnyType> [] oldLists = theLists;
+
+        theLists = new List[ nextPrime( 2* theLists.length) ];
+        for( int j = 0; j < theLists.length; j++){
+            theLists[j] = new LinkedList<>();
+        }
+
+        currentSize = 0;
+        for(List<AnyType> list : oldLists){
+            for(AnyType item : list){
+                insert( item );
+            }
+        }
     }
 
     private int myhash(AnyType x) {

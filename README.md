@@ -82,20 +82,27 @@ it to this repository.
 
 Insertion, search, and deletion running time (already sorted):
 
-![Firefly picture of a cat 86147](https://github.com/user-attachments/assets/8b2d008e-3011-4979-97b8-fa2e9886a01a)
+![sorted](https://github.com/user-attachments/assets/e411b991-9eba-42cf-b519-943b6efd095f)
 
 
 Insertion, search, and deletion running time (shuffled):
 
+![shuffled](https://github.com/user-attachments/assets/ed59cb4e-aee8-45cd-8254-ec44049ae4cb)
+
+
 Insertion, search, and deletion running time (reversed):
+
+![reversed](https://github.com/user-attachments/assets/74964a76-5d41-45fb-a407-821710938965)
+
 
 ## 5. **Document your Dataset and Results**
 Document the source of your dataset and any modifications you made to it. Describe the results of your analysis and 
 how it compares to the theoretical performance of the hash table operations.
 
-Dataset Source: // FINISH ME
-Dataset Modifications ("None" if unchanged): // FINISH ME
-Result Analysis: // FINISH ME
+Dataset Source: // FINISH ME  Dataset from kaggle
+Dataset Modifications ("None" if unchanged): // FINISH ME  Deleted top 10 since it is different years, deleted last two empty lines of dataset, changed the three ramens with no rating to a 0 rating, deleted “,” from ramen variety
+Result Analysis: // FINISH ME The theoretical performance of the hash table operations is O(1) for the average case and O(N) for the worst case. For the shuffled and the reversed data sets, the times we gathered remained relatively constant as N increased, generally running at around the O(1) time meaning there weren’t many frequent collisions. On the other hand, the sorted data set had a noticeably worse performance as N increased, showing more collisions, and clustering which relates closer to the worst case performance of O(N).
+
 
 ## Submission:
 
